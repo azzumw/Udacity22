@@ -2,7 +2,6 @@ package com.example.diceroller
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import com.example.diceroller.databinding.ActivityMainBinding
 
 private const val DICE_NUM = "dice"
