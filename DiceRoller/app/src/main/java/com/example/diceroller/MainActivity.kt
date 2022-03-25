@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.util.Log
 import com.example.diceroller.databinding.ActivityMainBinding
 
+private const val DICE_NUM = "dice"
 /**
  * This activity allows the user to roll a dice and view the result
  * on the screen.
@@ -21,9 +22,14 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        mainPresenter = MainPresenter(RealDice())
+        if(savedInstanceState!=null){
+            currentNumber = savedInstanceState.getInt(DICE_NUM)
+            setImage(currentNumber)
+        }else{
+            mainPresenter = MainPresenter(RealDice())
 
-        rollDice()
+            rollDice()
+        }
 
         binding.apply {
             rollBtn.setOnClickListener{
@@ -43,5 +49,10 @@ class MainActivity : AppCompatActivity() {
 
     private fun setImage(imageId : Int){
         binding.imageview.setImageResource(imageId)
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        outState.putInt(DICE_NUM,currentNumber)
     }
 }
