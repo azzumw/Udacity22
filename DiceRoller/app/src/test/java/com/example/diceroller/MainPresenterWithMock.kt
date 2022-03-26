@@ -1,12 +1,10 @@
 package com.example.diceroller
 
-import com.google.common.truth.ExpectFailure.assertThat
 import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.mockito.Mockito.*
-import org.mockito.junit.MockitoJUnit
 import org.mockito.junit.MockitoJUnitRunner
 
 
