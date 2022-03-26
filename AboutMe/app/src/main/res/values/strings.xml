@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">AboutMe</string>
+    <string name="name">Azzum Waqar</string>
+    <string name="yellow_start">Yellow Star</string>
+    <string name="bio">Manual Test Analyst by profession, but with a tinge of passion for developer/automation engineer (Yes - I have written UI tests in Android espresso). A passionate techy with a background in Computer Science. Currently, enrolled in an Android developer degree at Udacity. During the course of this degree, I managed to build my mobile applications portfolio: developing a News App, a Data-Storage App- Book Inventory, The Baking App Project, and many more (Check out my Github repo in the link provided below). As a software tester,As a software tester, I am involved in analyzing requirements, writing conditions, designing test cases, and uploading them on the Application Lifecycle Management tool - this is in my DNA now. My role also entails working on smoke, regression, and UAT; defect management, and liaising with the team of developers offshore.Take Away for you: My passion for software development and technology has imbued me with three key skills:Resourcefulness - to research and find solutions to complex problems; Grit - to work through challenges and persevere; Growth - to continue my learning and development.</string>
+    <string name="what_is_your_nickname">What is your nickname?</string>
+    <string name="done">done</string>
 </resources>
