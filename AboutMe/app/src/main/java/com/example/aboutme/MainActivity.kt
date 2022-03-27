@@ -4,36 +4,42 @@ import android.content.Context
 import android.os.Bundle
 import android.view.View
 import android.view.inputmethod.InputMethodManager
-import android.widget.Button
-import android.widget.EditText
-import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
+import androidx.databinding.DataBindingUtil
+import com.example.aboutme.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityMainBinding
+    private val myname = Name("Azzum Waqar")
 
-    private lateinit var nicknameEditTextView: EditText
-    private lateinit var done:Button
-    private lateinit var nicknameDisplayTextView:TextView
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
 
-        nicknameEditTextView = findViewById(R.id.nickname_edit)
-        done = findViewById(R.id.done_button)
-        nicknameDisplayTextView = findViewById(R.id.nickname)
+        binding = DataBindingUtil.setContentView(this,R.layout.activity_main)
 
-        done.setOnClickListener {
-           addNickName(it)
-        }
+        binding.dataname = myname
+        binding.activity = this
+
+//        binding.doneButton.setOnClickListener {
+//           addNickName(it)
+//        }
     }
 
-    private fun addNickName(view:View){
-        val name = nicknameEditTextView.text.toString()
-        nicknameDisplayTextView.text = name
-        nicknameDisplayTextView.isVisible = true
-        nicknameEditTextView.isVisible = false
-        done.isVisible = false
+    fun addNickName(view:View){
+        val name = binding.nicknameEdit.text.toString()
+
+        binding.apply {
+            dataname?.nickName = name
+            //in order to refresh the ui wiht new data
+            // we need to invalidate all binding expressions
+            //so that they get recreated with correct data
+            invalidateAll()
+            nickname.isVisible = true
+            nicknameEdit.isVisible = false
+            doneButton.isVisible = false
+        }
 
         val imm: InputMethodManager =
             getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
