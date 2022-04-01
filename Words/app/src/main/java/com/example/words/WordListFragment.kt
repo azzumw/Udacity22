@@ -16,10 +16,13 @@ class WordListFragment : Fragment() {
 
     private lateinit var recyclerView: RecyclerView
     private lateinit var letterId:String
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        letterId = activity?.intent?.extras?.getString(LETTER_ID).toString()
+        arguments?.let {
+            letterId = it.getString(LETTER_ID).toString()
+        }
     }
 
     override fun onCreateView(

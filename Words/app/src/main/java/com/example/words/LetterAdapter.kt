@@ -5,8 +5,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
-
 
 const val LETTER_ID = "letter"
 class LetterAdapter: RecyclerView.Adapter<LetterAdapter.LetterViewHolder>() {
@@ -33,11 +33,8 @@ class LetterAdapter: RecyclerView.Adapter<LetterAdapter.LetterViewHolder>() {
         holder.button.text = letter
 
         holder.button.setOnClickListener {
-
-            val context = holder.view.context
-            val intent = Intent(context,DetailActivity::class.java)
-            intent.putExtra(LETTER_ID,letter)
-            context.startActivity(intent)
+            val action = LetterListFragmentDirections.actionLetterListFragmentToWordListFragment(letter)
+            holder.view.findNavController().navigate(action)
         }
     }
 
