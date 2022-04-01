@@ -13,5 +13,4 @@
        tools:listitem="@layout/item_view"
        android:clipToPadding="false"
        android:padding="16dp"/>
-
   </FrameLayout>
