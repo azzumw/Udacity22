@@ -113,13 +113,15 @@ class GameFragment : Fragment() {
                         binding.invalidateAll()
                     } else {
                         // We've won!  Navigate to the gameWonFragment.
-                        view.findNavController().navigate(R.id.action_gameFragment_to_gameWonFragment)
+                             val action = GameFragmentDirections.actionGameFragmentToGameWonFragment(numQuestions = numQuestions, numCorrect = questionIndex)
+                            view.findNavController().navigate(action)
                         // call view.findNavController
                         // navigate to R.id.action_gameFragment_to_gameWonFragment
                     }
                 } else {
                     // Game over! A wrong answer sends us to the gameOverFragment.
-                    view.findNavController().navigate(R.id.action_gameFragment_to_gameOverFragment)
+                        val action = GameFragmentDirections.actionGameFragmentToGameOverFragment()
+                    view.findNavController().navigate(action)
                     // call view.findNavController
                     // navigate to R.id.action_gameFragment_to_gameOverFragment
                 }
