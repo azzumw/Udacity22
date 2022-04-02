@@ -19,7 +19,7 @@ class RulesFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        _binding = DataBindingUtil.inflate(inflater,R.layout.fragment_rules,container,false)
+        _binding = FragmentRulesBinding.inflate(inflater,container,false)
         return binding.root
     }
 
