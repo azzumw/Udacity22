@@ -31,6 +31,16 @@ class MainActivity : AppCompatActivity() {
 //        navController = this.findNavController(R.id.nav_host_fragment_container)
 
         NavigationUI.setupActionBarWithNavController(this,navController,drawerLayout)
+
+        navController.addOnDestinationChangedListener { controller, destination, arguments ->
+
+            if (destination.id == controller.graph.startDestinationId) {
+                drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED)
+            } else {
+                drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED)
+            }
+        }
+
         setupWithNavController(binding.navView,navController)
 
     }
