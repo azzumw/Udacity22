@@ -6,7 +6,7 @@
     <data>
         <variable
             name="loginFrag"
-            type="com.example.shoeinventory.LoginFragment" />
+            type="com.example.shoeinventory.ui.LoginFragment" />
     </data>
 
     <LinearLayout
@@ -14,7 +14,7 @@
         android:layout_height="match_parent"
         android:padding="16dp"
         android:orientation="vertical"
-        tools:context=".LoginFragment">
+        tools:context=".ui.LoginFragment">
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/emailEditTextField"
@@ -52,13 +52,17 @@
 
 
         <Button
+            android:id="@+id/loginBtn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:onClick="@{loginFrag::loginAndGotoWelcomeScreen}"
             android:text="@string/login_btn_text" />
 
         <Button
+            android:id="@+id/createNewBtn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:onClick="@{loginFrag::loginAndGotoWelcomeScreen}"
             android:text="@string/create_new_btn_text" />
 
     </LinearLayout>
