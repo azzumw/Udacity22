@@ -5,13 +5,14 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.databinding.DataBindingUtil
-import androidx.navigation.fragment.findNavController
+import android.widget.TextView
 import com.example.shoeinventory.R
-import com.example.shoeinventory.databinding.FragmentInstructionsBinding
+import com.example.shoeinventory.databinding.FragmentShoeListBinding
+import org.w3c.dom.Text
 
-class InstructionsFragment : Fragment() {
-    private var _binding:FragmentInstructionsBinding? = null
+class ShoeListFragment : Fragment() {
+
+    private var _binding:FragmentShoeListBinding? = null
     private val binding get() = _binding!!
 
     override fun onCreateView(
@@ -19,16 +20,13 @@ class InstructionsFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        _binding = FragmentInstructionsBinding.inflate(inflater,container,false)
+        _binding = FragmentShoeListBinding.inflate(inflater,container,false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.enterShorStoreBtn.setOnClickListener{
-            //navigate to shoe store
-            findNavController().navigate(R.id.action_instructionsFragment_to_shoeListFragment)
-        }
+
     }
 
     override fun onDestroyView() {
