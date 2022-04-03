@@ -29,6 +29,8 @@
 
         </com.google.android.material.textfield.TextInputLayout>
 
+
+
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/passwordEditTextField"
             android:layout_width="match_parent"
@@ -44,6 +46,8 @@
 
         </com.google.android.material.textfield.TextInputLayout>
 
+
+
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -53,7 +57,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/create_new_btn_text" />
-
 
     </LinearLayout>
 </layout>
