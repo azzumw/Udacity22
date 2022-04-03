@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">ShoeInventory</string>
+    <string name="email_label">Email</string>
+    <string name="pass_label">Password</string>
+    <string name="login_btn_text">login</string>
+    <string name="create_new_btn_text">Create New</string>
 </resources>
