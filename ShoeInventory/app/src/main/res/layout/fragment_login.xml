@@ -37,7 +37,7 @@
             android:id="@+id/passwordEditTextField"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
+            android:layout_marginBottom="60dp"
             app:endIconMode="password_toggle"
             android:hint="@string/pass_label">
 
