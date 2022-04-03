@@ -6,4 +6,5 @@ data class Shoe(
     var company:String,
     var description:String,
     val images: List<String> = mutableListOf()) {
+
 }
