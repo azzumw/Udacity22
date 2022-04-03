@@ -10,4 +10,6 @@
     <string name="cd_welcome_message" />
     <string name="cd_welcome_title">Shoe Hub</string>
     <string name="cd_next_btn">Next Button</string>
+    <string name="instructions_title">Instructions</string>
+    <string name="cd_instruction_desc">Instructions about how to browse the app</string>
 </resources>
