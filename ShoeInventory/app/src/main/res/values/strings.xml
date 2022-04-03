@@ -4,6 +4,10 @@
     <string name="pass_label">Password</string>
     <string name="login_btn_text">login</string>
     <string name="create_new_btn_text">Create New</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="welcome_title">ShoeHub</string>
+    <string name="welcome_message">Shoe made in heaven!</string>
+    <string name="next_btn_text">Next</string>
+    <string name="cd_welcome_message" />
+    <string name="cd_welcome_title">Shoe Hub</string>
+    <string name="cd_next_btn">Next Button</string>
 </resources>

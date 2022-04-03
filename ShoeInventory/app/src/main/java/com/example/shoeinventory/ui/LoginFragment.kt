@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
+import androidx.navigation.fragment.findNavController
 import com.example.shoeinventory.R
 import com.example.shoeinventory.databinding.FragmentLoginBinding
 
@@ -31,7 +32,7 @@ class LoginFragment : Fragment() {
 
     fun loginAndGotoWelcomeScreen(view:View){
         //navigate to Welcome Screen
-        Toast.makeText(context,"Login",Toast.LENGTH_LONG).show()
+        findNavController().navigate(R.id.action_loginFragment_to_welcomeFragment)
     }
 
     override fun onDestroyView() {
