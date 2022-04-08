@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.databinding.DataBindingUtil
 import com.example.shoeinventory.R
 import com.example.shoeinventory.databinding.FragmentShoeListBinding
 import org.w3c.dom.Text
@@ -20,7 +21,7 @@ class ShoeListFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        _binding = FragmentShoeListBinding.inflate(inflater,container,false)
+        _binding = DataBindingUtil.inflate(inflater,R.layout.fragment_shoe_list,container,false)
         return binding.root
     }
 

@@ -20,7 +20,7 @@ class WelcomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        _binding = FragmentWelcomeBinding.inflate(inflater,container,false)
+        _binding = DataBindingUtil.inflate(inflater,R.layout.fragment_welcome,container,false)
         return binding.root
     }
 
