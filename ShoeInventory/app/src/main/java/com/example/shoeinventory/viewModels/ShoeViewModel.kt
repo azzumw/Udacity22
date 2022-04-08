@@ -8,7 +8,6 @@ import com.example.shoeinventory.models.Shoe
 import timber.log.Timber
 
 class ShoeViewModel:ViewModel() {
-
     //move this to new User View model
     private var _isLoggedIn = MutableLiveData(false)
     val isLoggedIn :LiveData<Boolean>
