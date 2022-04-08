@@ -12,4 +12,12 @@
     <string name="cd_next_btn">Next Button</string>
     <string name="instructions_title">Instructions</string>
     <string name="cd_instruction_desc">Instructions about how to browse the app</string>
+    <string name="shoe_name_label">Name</string>
+    <string name="brand_name_label">Brand</string>
+    <string name="size_name_label">Size</string>
+    <string name="desc_name_label">Description</string>
+    <string name="save">Save</string>
+    <string name="cancel">CANCEL</string>
+
+
 </resources>
