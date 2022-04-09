@@ -26,18 +26,11 @@ class LoginFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val nav = findNavController()
-        nav.clearBackStack(R.id.shoeListFragment)
+
         // Inflate the layout for this fragment
         _binding = DataBindingUtil.inflate(inflater, R.layout.fragment_login, container, false)
 
-//        userViewModel.isLoggedIn.observe(this.viewLifecycleOwner){
-//                isLoggedIn ->
-//            if(isLoggedIn){
-//                userViewModel.logout()
-//                Log.e("Logout Called","${userViewModel.isLoggedIn.value}")
-//            }
-//        }
+        findNavController().popBackStack(R.id.shoeListFragment,true)
 
         return binding.root
     }
