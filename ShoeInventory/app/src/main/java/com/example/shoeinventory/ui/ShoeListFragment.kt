@@ -53,10 +53,12 @@ class ShoeListFragment : Fragment() {
                     //invoke add Data/view
                     if (it.size > 0) {
                         binding.NoShoeText.isVisible = false
+                        binding.shoeImage.isVisible = false
                         Toast.makeText(context, "${it.size}", Toast.LENGTH_SHORT).show()
                         createView(it)
                     } else {
                         binding.NoShoeText.isVisible = true
+                        binding.shoeImage.isVisible = true
                     }
                 }
             } else {
