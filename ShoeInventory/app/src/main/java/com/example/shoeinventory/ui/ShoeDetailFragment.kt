@@ -51,12 +51,15 @@ class ShoeDetailFragment : Fragment() {
 
     }
 
+    fun cancel(){
+        navigateToShoeList()
+    }
+
     private fun isValidEntry(): Boolean {
-//        val size = binding.sizeNameInput.toString().toDouble()
-//        Timber.i("Shoe Frag: Size: $size")
+
         return sharedViewModel.isValidEntry(
             binding.shoeNameInput.text.toString(),
-            binding.sizeNameInput.text.toString().toDouble(),
+            binding.sizeNameInput.text.toString(),
             binding.brandNameInput.toString(),
         )
     }

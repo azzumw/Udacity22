@@ -28,7 +28,7 @@ class ShoeViewModel:ViewModel() {
 
     private fun insertShoeInstance(shoe:Shoe){
         _shoesList.value?.add(shoe)
-        Log.e("VIEWMODEL", shoesList?.value?.get(0)?.name!!)
+        Log.e("VIEWMODEL", shoesList?.value?.size.toString())
 //        Timber.i("Shoe added: ${shoesList.value?.size}" )
     }
 
@@ -45,10 +45,10 @@ class ShoeViewModel:ViewModel() {
     //isValidEntry
     fun isValidEntry(
         name:String,
-        size:Double,
+        size:String,
         company:String):Boolean{
 
-        return name.isNotBlank() && !size.isNaN() && company.isNotBlank()
+        return name.isNotBlank() &&  size.isNotBlank() && company.isNotBlank()
     }
 
     override fun onCleared() {
@@ -57,5 +57,4 @@ class ShoeViewModel:ViewModel() {
         //careful
         _isLoggedIn.value = false
     }
-
 }

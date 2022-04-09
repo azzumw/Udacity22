@@ -108,6 +108,7 @@
 
             <Button
                 android:id="@+id/cancel_btn"
+                android:onClick="@{()->shoeDetailFrag.cancel()}"
                 style="?attr/materialButtonOutlinedStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
