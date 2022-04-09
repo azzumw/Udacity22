@@ -1,17 +1,23 @@
 <resources>
     <string name="app_name">ShoeInventory</string>
+    <string name="shoe_list_title">Shoe List</string>
+    <string name="shoe_detail_title">Add a Shoe</string>
+
     <string name="email_label">Email</string>
     <string name="pass_label">Password</string>
-    <string name="login_btn_text">login</string>
+    <string name="login_btn_text">Login</string>
     <string name="create_new_btn_text">Create New</string>
     <string name="welcome_title">ShoeHub</string>
     <string name="welcome_message">Shoe made in heaven!</string>
     <string name="next_btn_text">Next</string>
+
     <string name="cd_welcome_message" />
     <string name="cd_welcome_title">Shoe Hub</string>
     <string name="cd_next_btn">Next Button</string>
-    <string name="instructions_title">Instructions</string>
+    <string name="cd_add_shoe_button">Add Shoe Button</string>
     <string name="cd_instruction_desc">Instructions about how to browse the app</string>
+
+    <string name="instructions_title">Instructions</string>
     <string name="shoe_name_label">Name</string>
     <string name="brand_name_label">Brand</string>
     <string name="size_name_label">Size</string>
@@ -20,6 +26,8 @@
     <string name="cancel">CANCEL</string>
     <string name="email_error">Email required</string>
     <string name="password_error">Password Required</string>
+    <string name="no_shoe_message">Aww! Shoe Inventory Empty :(</string>
+
 
 
 </resources>

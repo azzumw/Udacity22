@@ -2,16 +2,15 @@ package com.example.shoeinventory.ui
 
 import android.graphics.Color
 import android.graphics.Color.rgb
-import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.util.Log
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
 import androidx.cardview.widget.CardView
+import androidx.core.view.isVisible
+import androidx.core.view.marginBottom
 import androidx.core.view.setPadding
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
@@ -22,12 +21,11 @@ import com.example.shoeinventory.databinding.FragmentShoeListBinding
 import com.example.shoeinventory.models.Shoe
 import com.example.shoeinventory.viewModels.ShoeViewModel
 import com.example.shoeinventory.viewModels.UserViewModel
-import org.w3c.dom.Text
 
 
 class ShoeListFragment : Fragment() {
 
-    private val sharedViewModel : ShoeViewModel by activityViewModels()
+    private val shoeViewModel : ShoeViewModel by activityViewModels()
     private val userViewModel : UserViewModel by activityViewModels()
 
     private var _binding:FragmentShoeListBinding? = null
@@ -37,6 +35,8 @@ class ShoeListFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
+        setHasOptionsMenu(true)
         // Inflate the layout for this fragment
         _binding = DataBindingUtil.inflate(inflater, R.layout.fragment_shoe_list,container,false)
         binding.shoeListFrag = this
@@ -50,19 +50,40 @@ class ShoeListFragment : Fragment() {
         userViewModel.isLoggedIn.observe(viewLifecycleOwner){
             isLoggedIn ->
             if(isLoggedIn){
-                sharedViewModel.shoesList.observe(viewLifecycleOwner){
+                shoeViewModel.shoesList.observe(viewLifecycleOwner){
                     //invoke add Data/view
                     if(it.size>0){
+                        binding.NoShoeText.isVisible = false
                         Toast.makeText(context,"${it.size}",Toast.LENGTH_SHORT).show()
                         createView(it)
+                    }else{
+                        binding.NoShoeText.isVisible = true
                     }
                 }
             }else{
                 nav.navigate(R.id.loginFragment)
             }
         }
+    }
 
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        super.onCreateOptionsMenu(menu, inflater)
+        inflater.inflate(R.menu.logout_menu,menu)
+    }
 
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when(item.itemId){
+            R.id.logout -> {
+                //set loggedin state as false
+                userViewModel.logout()
+                //navigate to login screen
+            }
+        }
+        return super.onOptionsItemSelected(item)
+    }
+
+    fun navigateToDetailScreen(){
+        findNavController().navigate(R.id.action_shoeListFragment_to_shoeDetailFragment)
     }
 
     private fun createView(list:MutableList<Shoe>){
@@ -98,7 +119,6 @@ class ShoeListFragment : Fragment() {
 
     private fun createCardView(textView:TextView):CardView{
 
-
         val c = CardView(requireContext())
         c.layoutParams = LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT)
         c.layoutParams.height = resources.getDimensionPixelSize(R.dimen.text_view_height)
@@ -110,16 +130,8 @@ class ShoeListFragment : Fragment() {
         return c
     }
 
-    fun navigateToDetailScreen(){
-        findNavController().navigate(R.id.action_shoeListFragment_to_shoeDetailFragment)
-    }
-
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
-    }
-
-    companion object{
-        fun createView(view:View){}
     }
 }

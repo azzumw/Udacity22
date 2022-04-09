@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.shoeinventory.R
 import com.example.shoeinventory.databinding.FragmentLoginBinding
@@ -18,6 +19,7 @@ import com.example.shoeinventory.viewModels.UserViewModel
 class LoginFragment : Fragment() {
     private var _binding : FragmentLoginBinding? = null
     private val binding get() = _binding!!
+
     private val userViewModel : UserViewModel by activityViewModels()
 
     override fun onCreateView(
@@ -29,24 +31,28 @@ class LoginFragment : Fragment() {
         // Inflate the layout for this fragment
         _binding = DataBindingUtil.inflate(inflater, R.layout.fragment_login,container,false)
 
+//        userViewModel.isLoggedIn.observe(this.viewLifecycleOwner){
+//                isLoggedIn ->
+//            if(isLoggedIn){
+//                userViewModel.logout()
+//                Log.e("Logout Called","${userViewModel.isLoggedIn.value}")
+//            }
+//        }
+
         return binding.root
     }
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.loginFrag = this
-        userViewModel.isLoggedIn.observe(this.viewLifecycleOwner){
-            isLoggedIn ->
-            if(isLoggedIn){
-                userViewModel.logout()
-            }
-        }
     }
 
 
     private fun authenticateUser(){
         userViewModel.authenticate()
         Log.e("LOGIN","${userViewModel.isLoggedIn.value}")
+
         Toast.makeText(context,"Welcome",Toast.LENGTH_LONG).show()
     }
 
