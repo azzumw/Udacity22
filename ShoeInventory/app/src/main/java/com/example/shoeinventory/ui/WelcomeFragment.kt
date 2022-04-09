@@ -12,7 +12,7 @@ import com.example.shoeinventory.databinding.FragmentWelcomeBinding
 
 class WelcomeFragment : Fragment() {
 
-    private var _binding:FragmentWelcomeBinding? = null
+    private var _binding: FragmentWelcomeBinding? = null
     private val binding get() = _binding!!
 
     override fun onCreateView(
@@ -20,7 +20,7 @@ class WelcomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        _binding = DataBindingUtil.inflate(inflater,R.layout.fragment_welcome,container,false)
+        _binding = DataBindingUtil.inflate(inflater, R.layout.fragment_welcome, container, false)
         return binding.root
     }
 
@@ -36,5 +36,4 @@ class WelcomeFragment : Fragment() {
         super.onDestroyView()
         _binding = null
     }
-
 }

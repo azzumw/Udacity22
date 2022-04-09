@@ -17,10 +17,10 @@ import com.example.shoeinventory.viewModels.ShoeViewModel
 import com.example.shoeinventory.viewModels.UserViewModel
 
 class LoginFragment : Fragment() {
-    private var _binding : FragmentLoginBinding? = null
+    private var _binding: FragmentLoginBinding? = null
     private val binding get() = _binding!!
 
-    private val userViewModel : UserViewModel by activityViewModels()
+    private val userViewModel: UserViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -29,7 +29,7 @@ class LoginFragment : Fragment() {
         val nav = findNavController()
         nav.clearBackStack(R.id.shoeListFragment)
         // Inflate the layout for this fragment
-        _binding = DataBindingUtil.inflate(inflater, R.layout.fragment_login,container,false)
+        _binding = DataBindingUtil.inflate(inflater, R.layout.fragment_login, container, false)
 
 //        userViewModel.isLoggedIn.observe(this.viewLifecycleOwner){
 //                isLoggedIn ->
@@ -49,43 +49,43 @@ class LoginFragment : Fragment() {
     }
 
 
-    private fun authenticateUser(){
+    private fun authenticateUser() {
         userViewModel.authenticate()
-        Log.e("LOGIN","${userViewModel.isLoggedIn.value}")
+        Log.e("LOGIN", "${userViewModel.isLoggedIn.value}")
 
-        Toast.makeText(context,"Welcome",Toast.LENGTH_LONG).show()
+        Toast.makeText(context, "Welcome", Toast.LENGTH_LONG).show()
     }
 
-    fun loginAndGotoWelcomeScreen(view:View){
-        if (isValidEntry()){
+    fun loginAndGotoWelcomeScreen(view: View) {
+        if (isValidEntry()) {
             authenticateUser()
             findNavController().navigate(R.id.action_loginFragment_to_welcomeFragment)
-        }else{
-            Toast.makeText(context,"Error",Toast.LENGTH_SHORT).show()
+        } else {
+            Toast.makeText(context, "Error", Toast.LENGTH_SHORT).show()
         }
     }
 
-    private fun isValidEntry():Boolean{
+    private fun isValidEntry(): Boolean {
         val username = binding.emailEditText.text.toString()
         val password = binding.passEditText.text.toString()
 
-        return userViewModel.isValidEntry(username,password)
+        return userViewModel.isValidEntry(username, password)
     }
 
-    private fun setErrorTextField(error:Boolean){
-        if(error){
+    private fun setErrorTextField(error: Boolean) {
+        if (error) {
 
 
-            if(binding.emailEditText.text.isNullOrBlank()) {
+            if (binding.emailEditText.text.isNullOrBlank()) {
                 binding.emailTextField.isErrorEnabled = true
                 binding.emailTextField.error = getString(R.string.email_error)
             }
-            if (binding.passEditText.text.isNullOrBlank()){
+            if (binding.passEditText.text.isNullOrBlank()) {
                 binding.passwordLabelText.isErrorEnabled = true
                 binding.passwordLabelText.error = getString(R.string.password_error)
             }
 
-        }else{
+        } else {
             binding.emailTextField.isErrorEnabled = false
             binding.passwordLabelText.isErrorEnabled = false
         }

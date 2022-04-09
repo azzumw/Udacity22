@@ -5,22 +5,23 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import timber.log.Timber
 
-class UserViewModel: ViewModel() {
+class UserViewModel : ViewModel() {
     private val _isLoggedIn = MutableLiveData(false)
     val isLoggedIn get() = _isLoggedIn
 
     init {
-        Log.e("USERVIEMWODEL","user view created login status: ${isLoggedIn.value}")
+        Log.e("USERVIEMWODEL", "user view created login status: ${isLoggedIn.value}")
     }
-    fun authenticate(){
+
+    fun authenticate() {
         _isLoggedIn.value = true
     }
 
-    fun isValidEntry(username:String,password:String):Boolean{
+    fun isValidEntry(username: String, password: String): Boolean {
         return !(username.isNullOrBlank() || password.isNullOrBlank())
     }
 
-    fun logout(){
+    fun logout() {
         _isLoggedIn.value = false
         Timber.e("User status: $isLoggedIn")
     }

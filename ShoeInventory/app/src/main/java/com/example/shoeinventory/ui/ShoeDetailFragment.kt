@@ -17,9 +17,9 @@ import timber.log.Timber
 
 class ShoeDetailFragment : Fragment() {
 
-    private val sharedViewModel : ShoeViewModel by activityViewModels()
+    private val sharedViewModel: ShoeViewModel by activityViewModels()
 
-    private var _binding:FragmentShoeDetailBinding? = null
+    private var _binding: FragmentShoeDetailBinding? = null
     private val binding get() = _binding!!
 
     override fun onCreateView(
@@ -27,16 +27,17 @@ class ShoeDetailFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        _binding = DataBindingUtil.inflate(inflater, R.layout.fragment_shoe_detail,container,false)
+        _binding =
+            DataBindingUtil.inflate(inflater, R.layout.fragment_shoe_detail, container, false)
         binding.shoeDetailFrag = this
         binding.lifecycleOwner = this
 
         return binding.root
     }
 
-    fun saveShoe(){
+    fun saveShoe() {
 
-        if(isValidEntry()){
+        if (isValidEntry()) {
             sharedViewModel.addShoeDetails(
                 binding.shoeNameInput.text.toString(),
                 binding.sizeNameInput.text.toString().toDouble(),
@@ -45,13 +46,13 @@ class ShoeDetailFragment : Fragment() {
             )
 
             navigateToShoeList()
-        }else{
-            Toast.makeText(context,"Error",Toast.LENGTH_SHORT).show()
+        } else {
+            Toast.makeText(context, "Error", Toast.LENGTH_SHORT).show()
         }
 
     }
 
-    fun cancel(){
+    fun cancel() {
         navigateToShoeList()
     }
 
@@ -64,7 +65,7 @@ class ShoeDetailFragment : Fragment() {
         )
     }
 
-    private fun navigateToShoeList(){
+    private fun navigateToShoeList() {
         findNavController().navigate(R.id.action_shoeDetailFragment_to_shoeListFragment)
     }
 

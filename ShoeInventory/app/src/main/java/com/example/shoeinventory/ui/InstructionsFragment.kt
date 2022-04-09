@@ -11,7 +11,7 @@ import com.example.shoeinventory.R
 import com.example.shoeinventory.databinding.FragmentInstructionsBinding
 
 class InstructionsFragment : Fragment() {
-    private var _binding:FragmentInstructionsBinding? = null
+    private var _binding: FragmentInstructionsBinding? = null
     private val binding get() = _binding!!
 
     override fun onCreateView(
@@ -19,13 +19,14 @@ class InstructionsFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        _binding = DataBindingUtil.inflate(inflater,R.layout.fragment_instructions,container,false)
+        _binding =
+            DataBindingUtil.inflate(inflater, R.layout.fragment_instructions, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.enterShorStoreBtn.setOnClickListener{
+        binding.enterShorStoreBtn.setOnClickListener {
             //navigate to shoe store
             findNavController().navigate(R.id.action_instructionsFragment_to_shoeListFragment)
         }

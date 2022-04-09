@@ -25,10 +25,10 @@ import com.example.shoeinventory.viewModels.UserViewModel
 
 class ShoeListFragment : Fragment() {
 
-    private val shoeViewModel : ShoeViewModel by activityViewModels()
-    private val userViewModel : UserViewModel by activityViewModels()
+    private val shoeViewModel: ShoeViewModel by activityViewModels()
+    private val userViewModel: UserViewModel by activityViewModels()
 
-    private var _binding:FragmentShoeListBinding? = null
+    private var _binding: FragmentShoeListBinding? = null
     private val binding get() = _binding!!
 
     override fun onCreateView(
@@ -38,7 +38,7 @@ class ShoeListFragment : Fragment() {
 
         setHasOptionsMenu(true)
         // Inflate the layout for this fragment
-        _binding = DataBindingUtil.inflate(inflater, R.layout.fragment_shoe_list,container,false)
+        _binding = DataBindingUtil.inflate(inflater, R.layout.fragment_shoe_list, container, false)
         binding.shoeListFrag = this
         return binding.root
     }
@@ -47,20 +47,19 @@ class ShoeListFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val nav = findNavController()
-        userViewModel.isLoggedIn.observe(viewLifecycleOwner){
-            isLoggedIn ->
-            if(isLoggedIn){
-                shoeViewModel.shoesList.observe(viewLifecycleOwner){
+        userViewModel.isLoggedIn.observe(viewLifecycleOwner) { isLoggedIn ->
+            if (isLoggedIn) {
+                shoeViewModel.shoesList.observe(viewLifecycleOwner) {
                     //invoke add Data/view
-                    if(it.size>0){
+                    if (it.size > 0) {
                         binding.NoShoeText.isVisible = false
-                        Toast.makeText(context,"${it.size}",Toast.LENGTH_SHORT).show()
+                        Toast.makeText(context, "${it.size}", Toast.LENGTH_SHORT).show()
                         createView(it)
-                    }else{
+                    } else {
                         binding.NoShoeText.isVisible = true
                     }
                 }
-            }else{
+            } else {
                 nav.navigate(R.id.loginFragment)
             }
         }
@@ -68,11 +67,11 @@ class ShoeListFragment : Fragment() {
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         super.onCreateOptionsMenu(menu, inflater)
-        inflater.inflate(R.menu.logout_menu,menu)
+        inflater.inflate(R.menu.logout_menu, menu)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when(item.itemId){
+        when (item.itemId) {
             R.id.logout -> {
                 //set loggedin state as false
                 userViewModel.logout()
@@ -82,45 +81,54 @@ class ShoeListFragment : Fragment() {
         return super.onOptionsItemSelected(item)
     }
 
-    fun navigateToDetailScreen(){
+    fun navigateToDetailScreen() {
         findNavController().navigate(R.id.action_shoeListFragment_to_shoeDetailFragment)
     }
 
-    private fun createView(list:MutableList<Shoe>){
+    private fun createView(list: MutableList<Shoe>) {
         val layout = binding.shoelistLinearLayout
         layout.setBackgroundColor(rgb(222, 218, 217))
 
-        for (i in 0 until list.size){
-            Log.e("FOR:","$i")
+        for (i in 0 until list.size) {
+            Log.e("FOR:", "$i")
             layout.addView(createCardView(createTextView(list[i].name)))
             layout.addView(createDivider())
         }
     }
 
-   private fun createDivider():View{
-       val v = View(context)
-       v.layoutParams =  LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT)
-       v.layoutParams.height = resources.getDimensionPixelSize(R.dimen.view_height)
-       v.setBackgroundColor(Color.LTGRAY)
-       return v
-   }
+    private fun createDivider(): View {
+        val v = View(context)
+        v.layoutParams = LinearLayout.LayoutParams(
+            LinearLayout.LayoutParams.MATCH_PARENT,
+            LinearLayout.LayoutParams.MATCH_PARENT
+        )
+        v.layoutParams.height = resources.getDimensionPixelSize(R.dimen.view_height)
+        v.setBackgroundColor(Color.LTGRAY)
+        return v
+    }
 
-    private fun createTextView(name:String):TextView{
+    private fun createTextView(name: String): TextView {
 
-        return  TextView(context).apply {
+        return TextView(context).apply {
             text = name
             textSize = 24.0f
-            setPadding(32,16,32,0)
+            setPadding(32, 16, 32, 0)
             textAlignment = TextView.TEXT_ALIGNMENT_TEXT_START
             layoutParams =
-                LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT)
+                LinearLayout.LayoutParams(
+                    LinearLayout.LayoutParams.MATCH_PARENT,
+                    LinearLayout.LayoutParams.MATCH_PARENT
+                )
         }
     }
 
-    private fun createCardView(textView:TextView):CardView{
+    private fun createCardView(textView: TextView): CardView {
 
         val c = CardView(requireContext())
-        c.layoutParams = LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT)
+        c.layoutParams = LinearLayout.LayoutParams(
+            LinearLayout.LayoutParams.MATCH_PARENT,
+            LinearLayout.LayoutParams.MATCH_PARENT
+        )
         c.layoutParams.height = resources.getDimensionPixelSize(R.dimen.text_view_height)
         c.radius = 10.0f
         c.cardElevation = 2.0f
