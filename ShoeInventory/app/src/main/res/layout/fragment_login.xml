@@ -53,6 +53,7 @@
 
         <Button
             android:id="@+id/loginBtn"
+            style="@style/Widget.AppCompat.Button.Colored"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:onClick="@{loginFrag::loginAndGotoWelcomeScreen}"
@@ -60,6 +61,7 @@
 
         <Button
             android:id="@+id/createNewBtn"
+            style="@style/ShapeAppearanceOverlay.Material3.Button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:onClick="@{loginFrag::loginAndGotoWelcomeScreen}"
