@@ -21,12 +21,14 @@ import com.example.shoeinventory.R
 import com.example.shoeinventory.databinding.FragmentShoeListBinding
 import com.example.shoeinventory.models.Shoe
 import com.example.shoeinventory.viewModels.ShoeViewModel
+import com.example.shoeinventory.viewModels.UserViewModel
 import org.w3c.dom.Text
 
 
 class ShoeListFragment : Fragment() {
 
     private val sharedViewModel : ShoeViewModel by activityViewModels()
+    private val userViewModel : UserViewModel by activityViewModels()
 
     private var _binding:FragmentShoeListBinding? = null
     private val binding get() = _binding!!
@@ -44,13 +46,23 @@ class ShoeListFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        sharedViewModel.shoesList.observe(viewLifecycleOwner){
-            //invoke add Data/view
-            if(it.size>0){
-                Toast.makeText(context,"${it.size}",Toast.LENGTH_SHORT).show()
-                createView(it)
+        val nav = findNavController()
+        userViewModel.isLoggedIn.observe(viewLifecycleOwner){
+            isLoggedIn ->
+            if(isLoggedIn){
+                sharedViewModel.shoesList.observe(viewLifecycleOwner){
+                    //invoke add Data/view
+                    if(it.size>0){
+                        Toast.makeText(context,"${it.size}",Toast.LENGTH_SHORT).show()
+                        createView(it)
+                    }
+                }
+            }else{
+                nav.navigate(R.id.loginFragment)
             }
         }
+
+
     }
 
     private fun createView(list:MutableList<Shoe>){
@@ -94,7 +106,7 @@ class ShoeListFragment : Fragment() {
         c.cardElevation = 2.0f
         c.setPadding(resources.getDimensionPixelSize(R.dimen.fab_margin))
         c.addView(textView)
-        
+
         return c
     }
 

@@ -17,7 +17,7 @@
         tools:context=".ui.LoginFragment">
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/emailEditTextField"
+            android:id="@+id/emailTextField"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
@@ -34,7 +34,7 @@
 
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/passwordEditTextField"
+            android:id="@+id/passwordLabelText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="60dp"

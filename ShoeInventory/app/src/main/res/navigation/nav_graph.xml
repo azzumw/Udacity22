@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph.xml"
-    app:startDestination="@id/loginFragment">
+    app:startDestination="@id/shoeListFragment">
 
     <fragment
         android:id="@+id/loginFragment"
@@ -30,6 +30,7 @@
         <action
             android:id="@+id/action_instructionsFragment_to_shoeListFragment"
             app:destination="@id/shoeListFragment"
+            app:launchSingleTop="true"
             app:popUpTo="@id/loginFragment"
             app:popUpToInclusive="true" />
     </fragment>
@@ -51,6 +52,8 @@
         <action
             android:id="@+id/action_shoeDetailFragment_to_shoeListFragment"
             app:destination="@id/shoeListFragment"
-            app:popUpToInclusive="false" />
+            app:launchSingleTop="true"
+            app:popUpTo="@id/shoeDetailFragment"
+            app:popUpToInclusive="true" />
     </fragment>
 </navigation>

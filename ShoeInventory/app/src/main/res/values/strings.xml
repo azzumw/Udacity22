@@ -18,6 +18,8 @@
     <string name="desc_name_label">Description</string>
     <string name="save">Save</string>
     <string name="cancel">CANCEL</string>
+    <string name="email_error">Email required</string>
+    <string name="password_error">Password Required</string>
 
 
 </resources>
