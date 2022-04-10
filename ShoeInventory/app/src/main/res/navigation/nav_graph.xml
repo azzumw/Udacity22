@@ -17,16 +17,20 @@
     <fragment
         android:id="@+id/welcomeFragment"
         android:name="com.example.shoeinventory.ui.WelcomeFragment"
-        android:label="fragment_welcome"
+        android:label="@string/welcome_frag_title"
         tools:layout="@layout/fragment_welcome">
         <action
             android:id="@+id/action_welcomeFragment_to_instructionsFragment"
             app:destination="@id/instructionsFragment" />
+        <argument
+            android:name="user"
+            app:argType="string"
+            android:defaultValue="Homie" />
     </fragment>
     <fragment
         android:id="@+id/instructionsFragment"
         android:name="com.example.shoeinventory.ui.InstructionsFragment"
-        android:label="fragment_instructions"
+        android:label="@string/instructions_title"
         tools:layout="@layout/fragment_instructions">
         <action
             android:id="@+id/action_instructionsFragment_to_shoeListFragment"

@@ -5,6 +5,7 @@ import android.os.Bundle
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.NavigationUI
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import com.example.shoeinventory.databinding.ActivityMainBinding
@@ -26,7 +27,11 @@ class MainActivity : AppCompatActivity() {
                 as NavHostFragment
         navController = navHostFragment.navController
 
-        appBarConfiguration = AppBarConfiguration(navController.graph)
+        val setOfTopLevelDestinations = setOf(R.id.shoeListFragment, R.id.loginFragment)
+
+        val appBarConfiguration = AppBarConfiguration.Builder(setOfTopLevelDestinations).build()
+        NavigationUI.setupWithNavController(binding.toolbar, navController, appBarConfiguration)
+//        appBarConfiguration = AppBarConfiguration(navController.graph)
         setupActionBarWithNavController(navController,appBarConfiguration)
     }
 

@@ -52,7 +52,9 @@ class LoginFragment : Fragment() {
     fun loginAndGotoWelcomeScreen(view: View) {
         if (isValidEntry()) {
             authenticateUser()
-            findNavController().navigate(R.id.action_loginFragment_to_welcomeFragment)
+            val name = binding.emailEditText.text.toString().capitalize()
+            val action = LoginFragmentDirections.actionLoginFragmentToWelcomeFragment(name)
+            findNavController().navigate(action)
         } else {
             Toast.makeText(context, "Error", Toast.LENGTH_SHORT).show()
         }
@@ -67,8 +69,6 @@ class LoginFragment : Fragment() {
 
     private fun setErrorTextField(error: Boolean) {
         if (error) {
-
-
             if (binding.emailEditText.text.isNullOrBlank()) {
                 binding.emailTextField.isErrorEnabled = true
                 binding.emailTextField.error = getString(R.string.email_error)

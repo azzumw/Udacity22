@@ -9,9 +9,7 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
 import androidx.cardview.widget.CardView
-import androidx.core.view.isVisible
-import androidx.core.view.marginBottom
-import androidx.core.view.setPadding
+import androidx.core.view.*
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
@@ -96,6 +94,18 @@ class ShoeListFragment : Fragment() {
             layout.addView(createCardView(createTextView(list[i].name)))
             layout.addView(createDivider())
         }
+
+//        val numOfchildren = layout.childCount
+//        var j = 0
+//        Log.e("LAYOUT",numOfchildren.toString())
+//        for(i in 0 until numOfchildren step 2){
+//            layout[i].setOnClickListener {
+//                var b = i-j
+//                Toast.makeText(context,"Clicked $i ${list[b].name}",Toast.LENGTH_SHORT).show()
+//            }
+//            ++j
+//        }
+
     }
 
     private fun createDivider(): View {
