@@ -1,6 +1,5 @@
 package com.example.shoeinventory
 
-import android.view.View
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.matcher.ViewMatchers.withId
 import java.lang.System.currentTimeMillis
