@@ -17,34 +17,11 @@ import org.junit.Test
 import org.junit.runner.RunWith
 
 @RunWith(AndroidJUnit4::class)
-class LoginTests {
-
-    companion object{
-        private val instrumentation = InstrumentationRegistry.getInstrumentation()
-
-        private const val shellCommandAnimatorOff =
-            "settings put global animator_duration_scale 0.0"
-
-        private const val shellCommandTransitionOff =
-            "settings put global transition_animation_scale 0.0"
-
-        private const val shellCommandWindowOff =
-            "settings put global window_animation_scale 0.0"
-
-        private val uiDevice:UiDevice = UiDevice.getInstance(instrumentation)
-    }
-
-    private val context = InstrumentationRegistry.getInstrumentation().targetContext
+class LoginTests :BaseTest(){
 
     @get:Rule
     val activity = ActivityScenarioRule(MainActivity::class.java)
 
-    @Before
-    fun setUp() {
-        uiDevice.executeShellCommand(shellCommandAnimatorOff)
-        uiDevice.executeShellCommand(shellCommandTransitionOff)
-        uiDevice.executeShellCommand(shellCommandWindowOff)
-    }
 
     @Test
     fun failed_login_with_no_email_and_password() {

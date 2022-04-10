@@ -10,6 +10,7 @@ import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.uiautomator.*
 import junit.runner.Version.id
+import org.hamcrest.Matchers
 import org.junit.After
 
 import org.junit.Test
@@ -25,16 +26,12 @@ import org.junit.Rule
  * See [testing documentation](http://d.android.com/tools/testing).
  */
 @RunWith(AndroidJUnit4::class)
-class MainActivityTests {
+class MainActivityTests : BaseTest(){
 
     @get:Rule
     val activity = ActivityScenarioRule(MainActivity::class.java)
 
     companion object{
-        private val context = InstrumentationRegistry.getInstrumentation().targetContext
-        private val instrumentation = InstrumentationRegistry.getInstrumentation()
-        private val uiDevice: UiDevice = UiDevice.getInstance(instrumentation)
-        private const val password = "password"
 
         fun getShoeName():String{
             return "Beetle"
@@ -70,7 +67,7 @@ class MainActivityTests {
     }
 
     @Before
-    fun setUp() {
+    override fun setUp() {
         registerGooglePasswordPopUp()
     }
 
@@ -81,27 +78,28 @@ class MainActivityTests {
 
     @Test
     fun happy_flow() {
-        onView(withId(R.id.emailEditText)).perform(typeText("Azzum"), closeSoftKeyboard())
-        onView(withId(R.id.passEditText)).perform(typeText("password"), closeSoftKeyboard())
-        onView(withId(R.id.loginBtn)).perform(click())
 
-        onView(withText("Welcome Azzum")).check(matches(isDisplayed()))
+        emailEditText.perform(typeText(email), closeSoftKeyboard())
+        passwordEditText.perform(typeText(password), closeSoftKeyboard())
+        loginBtn.perform(click())
 
-        onView(withId(R.id.nextBtn)).perform(click())
+        onView(withText(Matchers.equalToIgnoringCase("Welcome $email"))).check(matches(isDisplayed()))
+
+        nextBtn.perform(click())
 
         onView(withContentDescription(R.string.cd_login)).perform(click())
 
-        onView(withId(R.id.shoe_image)).check(matches(isDisplayed()))
+        shoeImage.check(matches(isDisplayed()))
 
-        onView(withId(R.id.fab)).perform(click())
+        fab.perform(click())
 
-        onView(withId(R.id.shoe_name_input)).perform(typeText(getShoeName()), closeSoftKeyboard())
-        onView(withId(R.id.brand_name_input)).perform(typeText(getBrandName()), closeSoftKeyboard())
-        onView(withId(R.id.size_name_input)).perform(typeText(getShoeSize().toString()),
+        shoeNameEditText.perform(typeText(getShoeName()), closeSoftKeyboard())
+        shoeBrandEditText.perform(typeText(getBrandName()), closeSoftKeyboard())
+        shoeSizeEditText.perform(typeText(getShoeSize().toString()),
             closeSoftKeyboard())
-        onView(withId(R.id.description_name_input)).perform(typeText(getDescription()),
+        shoeDesciptionEditText.perform(typeText(getDescription()),
             closeSoftKeyboard())
-        onView(withId(R.id.save_btn)).perform(click())
+        saveBtn.perform(click())
 
         onView(withText(getShoeName())).check(matches(isDisplayed()))
     }
@@ -109,8 +107,8 @@ class MainActivityTests {
     @Test
     fun happy_flow_log_out(){
 
-        onView(withId(R.id.emailEditText)).perform(typeText("Azzum"), closeSoftKeyboard())
-        onView(withId(R.id.passEditText)).perform(typeText("password"), closeSoftKeyboard())
+        onView(withId(R.id.emailEditText)).perform(typeText(email), closeSoftKeyboard())
+        onView(withId(R.id.passEditText)).perform(typeText(password), closeSoftKeyboard())
         onView(withId(R.id.loginBtn)).perform(click())
 
         onView(withId(R.id.nextBtn)).perform(click())
