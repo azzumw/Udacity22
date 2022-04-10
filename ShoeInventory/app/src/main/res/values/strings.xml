@@ -35,6 +35,10 @@
     <string name="password_error">Password Required</string>
     <string name="no_shoe_message">Aww! Shoe Inventory Empty :(</string>
     <string name="cd_welcome_message">Welcome message</string>
+    <string name="add_shoe_detail_error">Please fill in the required details</string>
+    <string name="shoe_name_missing_error">Shoe name is required</string>
+    <string name="shoe_brand_missing_error">Shoe brand name is required</string>
+    <string name="size_missing_error">Size is required</string>
 
 
 </resources>

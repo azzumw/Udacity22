@@ -43,8 +43,6 @@ class LoginFragment : Fragment() {
 
     private fun authenticateUser() {
         userViewModel.authenticate()
-        Log.e("LOGIN", "${userViewModel.isLoggedIn.value}")
-//        Toast.makeText(context, "Welcome", Toast.LENGTH_SHORT).show()
     }
 
     fun loginAndGotoWelcomeScreen(view: View) {
@@ -57,7 +55,6 @@ class LoginFragment : Fragment() {
 
         } else {
             setErrorTextField(true)
-            Toast.makeText(context, "Error", Toast.LENGTH_SHORT).show()
         }
     }
 

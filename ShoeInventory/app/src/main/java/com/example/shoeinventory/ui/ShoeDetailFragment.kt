@@ -34,7 +34,7 @@ class ShoeDetailFragment : Fragment() {
     }
 
     fun saveShoe() {
-
+        setErrorTextField(false)
         if (isValidEntry()) {
             sharedViewModel.addShoeDetails(
                 binding.shoeNameInput.text.toString(),
@@ -45,7 +45,8 @@ class ShoeDetailFragment : Fragment() {
 
             navigateToShoeList()
         } else {
-            Toast.makeText(context, "Error", Toast.LENGTH_SHORT).show()
+            setErrorTextField(true)
+            Toast.makeText(context, getString(R.string.add_shoe_detail_error), Toast.LENGTH_SHORT).show()
         }
 
     }
@@ -59,12 +60,36 @@ class ShoeDetailFragment : Fragment() {
         return sharedViewModel.isValidEntry(
             binding.shoeNameInput.text.toString(),
             binding.sizeNameInput.text.toString(),
-            binding.brandNameInput.toString(),
+            binding.brandNameInput.text.toString(),
         )
     }
 
     private fun navigateToShoeList() {
         findNavController().navigate(R.id.action_shoeDetailFragment_to_shoeListFragment)
+    }
+
+    private fun setErrorTextField(error: Boolean) {
+        if (error) {
+            if (binding.shoeNameInput.text.isNullOrBlank()) {
+
+                binding.shoeNameLabel.isErrorEnabled = true
+                binding.shoeNameLabel.error = getString(R.string.shoe_name_missing_error)
+            }
+            if (binding.brandNameInput.text.isNullOrBlank()) {
+                binding.brandNameLabel.isErrorEnabled = true
+                binding.brandNameLabel.error = getString(R.string.shoe_brand_missing_error)
+            }
+            if (binding.sizeNameInput.text.isNullOrBlank()) {
+                binding.sizeNameLabel.isErrorEnabled = true
+                binding.sizeNameLabel.error = getString(R.string.size_missing_error)
+            }
+
+
+        } else {
+            binding.shoeNameLabel.isErrorEnabled = false
+            binding.brandNameLabel.isErrorEnabled = false
+            binding.sizeNameLabel.isErrorEnabled = false
+        }
     }
 
     override fun onDestroyView() {
