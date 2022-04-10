@@ -1,11 +1,9 @@
 package com.example.shoeinventory.viewModels
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.shoeinventory.models.Shoe
-import timber.log.Timber
 
 class ShoeViewModel : ViewModel() {
 
@@ -13,15 +11,9 @@ class ShoeViewModel : ViewModel() {
     val shoesList: LiveData<MutableList<Shoe>>
         get() = _shoesList
 
-    init {
-
-        Timber.i("Viewmodel created!")
-    }
 
     private fun insertShoeInstance(shoe: Shoe) {
         _shoesList.value?.add(shoe)
-        Log.e("VIEWMODEL", shoesList?.value?.size.toString())
-//        Timber.i("Shoe added: ${shoesList.value?.size}" )
     }
 
     fun addShoeDetails(
@@ -43,10 +35,5 @@ class ShoeViewModel : ViewModel() {
     ): Boolean {
 
         return name.isNotBlank() && size.isNotBlank() && company.isNotBlank()
-    }
-
-    override fun onCleared() {
-        super.onCleared()
-        Timber.i("ViewModel cleared!")
     }
 }

@@ -3,7 +3,6 @@ package com.example.shoeinventory.ui
 import android.graphics.Color
 import android.graphics.Color.rgb
 import android.os.Bundle
-import android.util.Log
 import android.view.*
 import android.widget.LinearLayout
 import android.widget.TextView
@@ -19,7 +18,6 @@ import com.example.shoeinventory.databinding.FragmentShoeListBinding
 import com.example.shoeinventory.models.Shoe
 import com.example.shoeinventory.viewModels.ShoeViewModel
 import com.example.shoeinventory.viewModels.UserViewModel
-
 
 class ShoeListFragment : Fragment() {
 
@@ -44,7 +42,7 @@ class ShoeListFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val nav = findNavController()
+
         userViewModel.isLoggedIn.observe(viewLifecycleOwner) { isLoggedIn ->
             if (isLoggedIn) {
                 shoeViewModel.shoesList.observe(viewLifecycleOwner) {
@@ -60,7 +58,7 @@ class ShoeListFragment : Fragment() {
                     }
                 }
             } else {
-                nav.navigate(R.id.loginFragment)
+                findNavController().navigate(R.id.loginFragment)
             }
         }
     }

@@ -9,11 +9,9 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.activityViewModels
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.shoeinventory.R
 import com.example.shoeinventory.databinding.FragmentLoginBinding
-import com.example.shoeinventory.viewModels.ShoeViewModel
 import com.example.shoeinventory.viewModels.UserViewModel
 
 class LoginFragment : Fragment() {
@@ -31,7 +29,7 @@ class LoginFragment : Fragment() {
         // Inflate the layout for this fragment
         _binding = DataBindingUtil.inflate(inflater, R.layout.fragment_login, container, false)
 
-        findNavController().popBackStack(R.id.shoeListFragment,true)
+        findNavController().popBackStack(R.id.shoeListFragment, true)
 
         return binding.root
     }

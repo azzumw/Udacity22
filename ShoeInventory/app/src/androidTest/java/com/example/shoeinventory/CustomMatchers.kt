@@ -11,6 +11,9 @@ import org.hamcrest.Matcher
 
 object CustomMatchers {
 
+    /**
+     * To test email and password errors on Login screen
+     * */
     fun hasError(expectedErrorText: String): Matcher<View> {
         return object : BoundedMatcher<View, TextInputLayout>(TextInputLayout::class.java) {
             override fun describeTo(description: Description?) {
@@ -20,7 +23,6 @@ object CustomMatchers {
             override fun matchesSafely(item: TextInputLayout?): Boolean {
                 return expectedErrorText == item?.error.toString()
             }
-
         }
     }
 }
