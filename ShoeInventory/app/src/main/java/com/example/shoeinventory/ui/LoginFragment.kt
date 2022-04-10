@@ -46,17 +46,19 @@ class LoginFragment : Fragment() {
     private fun authenticateUser() {
         userViewModel.authenticate()
         Log.e("LOGIN", "${userViewModel.isLoggedIn.value}")
-
-        Toast.makeText(context, "Welcome", Toast.LENGTH_SHORT).show()
+//        Toast.makeText(context, "Welcome", Toast.LENGTH_SHORT).show()
     }
 
     fun loginAndGotoWelcomeScreen(view: View) {
+        setErrorTextField(false)
         if (isValidEntry()) {
             authenticateUser()
             val name = binding.emailEditText.text.toString().capitalize()
             val action = LoginFragmentDirections.actionLoginFragmentToWelcomeFragment(name)
             findNavController().navigate(action)
+
         } else {
+            setErrorTextField(true)
             Toast.makeText(context, "Error", Toast.LENGTH_SHORT).show()
         }
     }
@@ -71,6 +73,7 @@ class LoginFragment : Fragment() {
     private fun setErrorTextField(error: Boolean) {
         if (error) {
             if (binding.emailEditText.text.isNullOrBlank()) {
+
                 binding.emailTextField.isErrorEnabled = true
                 binding.emailTextField.error = getString(R.string.email_error)
             }

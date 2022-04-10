@@ -89,7 +89,7 @@
             android:layout_marginTop="60dp"
             android:background="@color/colorAccent"
             android:src="@drawable/ic_login"
-            android:text="@string/next_btn_text"
+            android:contentDescription="@string/cd_login"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/instruction_5_tv" />

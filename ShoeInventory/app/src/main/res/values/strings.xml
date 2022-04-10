@@ -16,6 +16,7 @@
     <string name="cd_next_btn">Next Button</string>
     <string name="cd_add_shoe_button">Add Shoe Button</string>
     <string name="cd_instruction_desc">Instructions about how to browse the app</string>
+    <string name="cd_login">Login</string>
 
     <string name="instructions_title">Instructions</string>
     <string name="instruction_1">1. Please press the Enter icon below in pink to view the shoe list.</string>
