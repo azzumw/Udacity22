@@ -17,10 +17,10 @@ import timber.log.Timber
 
 class ShoeDetailFragment : Fragment() {
 
-    private val sharedViewModel: ShoeViewModel by activityViewModels()
-
     private var _binding: FragmentShoeDetailBinding? = null
     private val binding get() = _binding!!
+
+    private val sharedViewModel: ShoeViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

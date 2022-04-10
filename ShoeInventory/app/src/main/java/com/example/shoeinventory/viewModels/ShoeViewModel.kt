@@ -8,18 +8,10 @@ import com.example.shoeinventory.models.Shoe
 import timber.log.Timber
 
 class ShoeViewModel : ViewModel() {
-    //move this to new User View model
-//    private var _isLoggedIn = MutableLiveData(false)
-//    val isLoggedIn :LiveData<Boolean>
-//    get() = _isLoggedIn
 
     private val _shoesList = MutableLiveData<MutableList<Shoe>>(mutableListOf())
     val shoesList: LiveData<MutableList<Shoe>>
         get() = _shoesList
-
-    private val _shoe = MutableLiveData<Shoe>()
-    val shoe: LiveData<Shoe>
-        get() = _shoe
 
     init {
 
@@ -56,11 +48,5 @@ class ShoeViewModel : ViewModel() {
     override fun onCleared() {
         super.onCleared()
         Timber.i("ViewModel cleared!")
-        //careful
-//        _isLoggedIn.value = false
-    }
-
-    fun authenticate() {
-//        _isLoggedIn.value = true
     }
 }

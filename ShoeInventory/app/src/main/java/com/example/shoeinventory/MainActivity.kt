@@ -11,8 +11,9 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import com.example.shoeinventory.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
-    private lateinit var navController:NavController
-    private lateinit var binding : ActivityMainBinding
+
+    private lateinit var navController: NavController
+    private lateinit var binding: ActivityMainBinding
     private lateinit var appBarConfiguration: AppBarConfiguration
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -23,8 +24,9 @@ class MainActivity : AppCompatActivity() {
 
         setSupportActionBar(binding.toolbar)
 
-        val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment_content_main)
-                as NavHostFragment
+        val navHostFragment =
+            supportFragmentManager.findFragmentById(R.id.nav_host_fragment_content_main)
+                    as NavHostFragment
         navController = navHostFragment.navController
 
         val setOfTopLevelDestinations = setOf(R.id.shoeListFragment, R.id.loginFragment)
@@ -32,7 +34,7 @@ class MainActivity : AppCompatActivity() {
         val appBarConfiguration = AppBarConfiguration.Builder(setOfTopLevelDestinations).build()
         NavigationUI.setupWithNavController(binding.toolbar, navController, appBarConfiguration)
 //        appBarConfiguration = AppBarConfiguration(navController.graph)
-        setupActionBarWithNavController(navController,appBarConfiguration)
+        setupActionBarWithNavController(navController, appBarConfiguration)
     }
 
     override fun onSupportNavigateUp(): Boolean {

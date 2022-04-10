@@ -17,6 +17,7 @@ import com.example.shoeinventory.viewModels.ShoeViewModel
 import com.example.shoeinventory.viewModels.UserViewModel
 
 class LoginFragment : Fragment() {
+
     private var _binding: FragmentLoginBinding? = null
     private val binding get() = _binding!!
 

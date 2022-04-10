@@ -23,11 +23,11 @@ import com.example.shoeinventory.viewModels.UserViewModel
 
 class ShoeListFragment : Fragment() {
 
-    private val shoeViewModel: ShoeViewModel by activityViewModels()
-    private val userViewModel: UserViewModel by activityViewModels()
-
     private var _binding: FragmentShoeListBinding? = null
     private val binding get() = _binding!!
+
+    private val shoeViewModel: ShoeViewModel by activityViewModels()
+    private val userViewModel: UserViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

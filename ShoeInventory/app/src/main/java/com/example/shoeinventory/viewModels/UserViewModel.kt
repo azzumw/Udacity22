@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModel
 import timber.log.Timber
 
 class UserViewModel : ViewModel() {
+
     private val _isLoggedIn = MutableLiveData(false)
     val isLoggedIn get() = _isLoggedIn
 
