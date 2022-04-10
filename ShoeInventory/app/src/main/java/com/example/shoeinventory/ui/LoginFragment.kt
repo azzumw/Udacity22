@@ -47,7 +47,7 @@ class LoginFragment : Fragment() {
         userViewModel.authenticate()
         Log.e("LOGIN", "${userViewModel.isLoggedIn.value}")
 
-        Toast.makeText(context, "Welcome", Toast.LENGTH_LONG).show()
+        Toast.makeText(context, "Welcome", Toast.LENGTH_SHORT).show()
     }
 
     fun loginAndGotoWelcomeScreen(view: View) {

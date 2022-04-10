@@ -75,7 +75,6 @@ class ShoeListFragment : Fragment() {
             R.id.logout -> {
                 //set loggedin state as false
                 userViewModel.logout()
-                //navigate to login screen
             }
         }
         return super.onOptionsItemSelected(item)
@@ -86,26 +85,17 @@ class ShoeListFragment : Fragment() {
     }
 
     private fun createView(list: MutableList<Shoe>) {
+        //sort the list alphabetically
+        val sortedAppsList = list.sortedBy { it.name }
+
+        //get the linearlayout instance
         val layout = binding.shoelistLinearLayout
         layout.setBackgroundColor(rgb(222, 218, 217))
 
         for (i in 0 until list.size) {
-            Log.e("FOR:", "$i")
-            layout.addView(createCardView(createTextView(list[i].name)))
+            layout.addView(createCardView(createTextView(sortedAppsList[i].name)))
             layout.addView(createDivider())
         }
-
-//        val numOfchildren = layout.childCount
-//        var j = 0
-//        Log.e("LAYOUT",numOfchildren.toString())
-//        for(i in 0 until numOfchildren step 2){
-//            layout[i].setOnClickListener {
-//                var b = i-j
-//                Toast.makeText(context,"Clicked $i ${list[b].name}",Toast.LENGTH_SHORT).show()
-//            }
-//            ++j
-//        }
-
     }
 
     private fun createDivider(): View {
