@@ -11,8 +11,8 @@ import org.hamcrest.Matcher
 
 object CustomMatchers {
 
-    fun hasError(expectedErrorText:String): Matcher<View>{
-        return object : BoundedMatcher<View,TextInputLayout>(TextInputLayout::class.java){
+    fun hasError(expectedErrorText: String): Matcher<View> {
+        return object : BoundedMatcher<View, TextInputLayout>(TextInputLayout::class.java) {
             override fun describeTo(description: Description?) {
                 description?.appendText("Could not find: $expectedErrorText")
             }

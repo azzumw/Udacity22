@@ -1,22 +1,16 @@
 package com.example.shoeinventory
 
-import android.content.Context
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.action.ViewActions.*
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.matcher.ViewMatchers.*
 import androidx.test.ext.junit.rules.ActivityScenarioRule
-import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.uiautomator.*
-import junit.runner.Version.id
 import org.hamcrest.Matchers
 import org.junit.After
-
 import org.junit.Test
 import org.junit.runner.RunWith
-
-import org.junit.Assert.*
 import org.junit.Before
 import org.junit.Rule
 
@@ -26,41 +20,29 @@ import org.junit.Rule
  * See [testing documentation](http://d.android.com/tools/testing).
  */
 @RunWith(AndroidJUnit4::class)
-class MainActivityTests : BaseTest(){
+class MainActivityTests : BaseTest() {
 
     @get:Rule
     val activity = ActivityScenarioRule(MainActivity::class.java)
 
-    companion object{
+    companion object {
 
-        fun getShoeName():String{
-            return "Beetle"
-        }
-
-        fun getBrandName():String{
-            return "Camper"
-        }
-
-        fun getShoeSize():Double = 8.0
-
-        fun getDescription():String = "${System.currentTimeMillis()} description"
-
-        private val googlePasswordPopUpWatcher = UiWatcher{
+        private val googlePasswordPopUpWatcher = UiWatcher {
             val notNowButton = uiDevice.findObject(UiSelector().text("Not now"))
-            if(null != notNowButton){
+            if (null != notNowButton) {
                 notNowButton.click()
                 return@UiWatcher true
             }
             false
         }
 
-        private fun  registerGooglePasswordPopUp(){
-            uiDevice.registerWatcher("googlePasswordPopUpWatcher",googlePasswordPopUpWatcher)
+        private fun registerGooglePasswordPopUp() {
+            uiDevice.registerWatcher("googlePasswordPopUpWatcher", googlePasswordPopUpWatcher)
 
             uiDevice.runWatchers()
         }
 
-        private fun removeWatchers(){
+        private fun removeWatchers() {
             uiDevice.removeWatcher("googlePasswordPopUpWatcher")
         }
 
@@ -93,19 +75,23 @@ class MainActivityTests : BaseTest(){
 
         fab.perform(click())
 
-        shoeNameEditText.perform(typeText(getShoeName()), closeSoftKeyboard())
-        shoeBrandEditText.perform(typeText(getBrandName()), closeSoftKeyboard())
-        shoeSizeEditText.perform(typeText(getShoeSize().toString()),
-            closeSoftKeyboard())
-        shoeDesciptionEditText.perform(typeText(getDescription()),
-            closeSoftKeyboard())
+        shoeNameEditText.perform(typeText(shoename), closeSoftKeyboard())
+        shoeBrandEditText.perform(typeText(shoebrand), closeSoftKeyboard())
+        shoeSizeEditText.perform(
+            typeText(shoesize.toString()),
+            closeSoftKeyboard()
+        )
+        shoeDesciptionEditText.perform(
+            typeText(shoedesciption),
+            closeSoftKeyboard()
+        )
         saveBtn.perform(click())
 
-        onView(withText(getShoeName())).check(matches(isDisplayed()))
+        onView(withText(shoename)).check(matches(isDisplayed()))
     }
 
     @Test
-    fun happy_flow_log_out(){
+    fun happy_flow_log_out() {
 
         onView(withId(R.id.emailEditText)).perform(typeText(email), closeSoftKeyboard())
         onView(withId(R.id.passEditText)).perform(typeText(password), closeSoftKeyboard())
@@ -117,7 +103,7 @@ class MainActivityTests : BaseTest(){
 
         onView(withId(R.id.logout)).perform(click())
 
-       onView(withId(R.id.loginBtn)).check(matches(isDisplayed()))
+        onView(withId(R.id.loginBtn)).check(matches(isDisplayed()))
 
     }
 }

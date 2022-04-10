@@ -3,9 +3,14 @@ package com.example.shoeinventory
 import android.view.View
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.matcher.ViewMatchers.withId
+import java.lang.System.currentTimeMillis
 
 const val password = "password"
 const val email = "azzum"
+const val shoename = "beetle"
+const val shoebrand = "camper"
+const val shoesize = "8.0"
+val shoedesciption = "${currentTimeMillis()} description"
 
 val loginBtn = onView(withId(R.id.loginBtn))
 val passwordEditText = onView(withId(R.id.passEditText))

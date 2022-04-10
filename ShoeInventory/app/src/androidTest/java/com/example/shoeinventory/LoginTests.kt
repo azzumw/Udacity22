@@ -17,7 +17,7 @@ import org.junit.Test
 import org.junit.runner.RunWith
 
 @RunWith(AndroidJUnit4::class)
-class LoginTests :BaseTest(){
+class LoginTests : BaseTest() {
 
     @get:Rule
     val activity = ActivityScenarioRule(MainActivity::class.java)
@@ -65,7 +65,7 @@ class LoginTests :BaseTest(){
     }
 
     @Test
-    fun successLogin(){
+    fun successLogin() {
         emailEditText.perform(typeText(email))
         passwordEditText.perform(typeText(password))
 
