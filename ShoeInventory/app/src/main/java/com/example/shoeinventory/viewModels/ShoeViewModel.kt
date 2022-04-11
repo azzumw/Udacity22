@@ -27,13 +27,10 @@ class ShoeViewModel : ViewModel() {
         val shoedesc = shoeDescription.value.toString()
 
         val shoeBinding = Shoe(shoename,shoesize,shoebrand,shoedesc)
-//        val shoe = Shoe(name, size, company, description)
 
         insertShoeInstance(shoeBinding)
-
     }
 
-    //isValidEntry
     fun isValidEntry(): Boolean {
 
         if(shoeName.value.isNullOrBlank() ||
@@ -42,7 +39,6 @@ class ShoeViewModel : ViewModel() {
 
             return false
         }
-        //add the shoe and return true
         return true
     }
 
