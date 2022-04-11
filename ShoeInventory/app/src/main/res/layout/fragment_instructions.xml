@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="16dp"
+        tools:context=".ui.InstructionsFragment">
+
+
+        <TextView
+            android:id="@+id/instruction_title_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/cd_welcome_title"
+            android:text="@string/instructions_title"
+            android:textAlignment="center"
+            android:textColor="#000000"
+            android:textSize="34sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.008"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.023" />
+
+        <TextView
+            android:id="@+id/instruction_1_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/cd_instruction_desc"
+            android:text="@string/instruction_1"
+            style="@style/instruction_textView_styling"
+            app:layout_constraintHorizontal_bias="0.097"
+            app:layout_constraintTop_toBottomOf="@id/instruction_title_tv" />
+
+        <TextView
+            android:id="@+id/instruction_2_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/instruction_textView_styling"
+            android:text="@string/instruction_2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/instruction_1_tv"/>
+
+        <TextView
+            android:id="@+id/instruction_3_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/instruction_textView_styling"
+            android:text="@string/instruction_3"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/instruction_2_tv"/>
+
+        <TextView
+            android:id="@+id/instruction_4_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/instruction_textView_styling"
+            android:text="@string/instruction_4"
+            app:layout_constraintTop_toBottomOf="@id/instruction_3_tv"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+        <TextView
+            android:id="@+id/instruction_5_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/instruction_textView_styling"
+            android:text="@string/instruction_5"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/instruction_4_tv"/>
+
+        <ImageButton
+            android:id="@+id/enterShorStoreBtn"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="60dp"
+            android:background="@color/colorAccent"
+            android:src="@drawable/ic_login"
+            android:contentDescription="@string/cd_login"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/instruction_5_tv" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

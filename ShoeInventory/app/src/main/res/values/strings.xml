@@ -1,0 +1,44 @@
+<resources>
+    <string name="app_name">ShoeInventory</string>
+    <string name="shoe_list_title">Shoe List</string>
+    <string name="shoe_detail_title">Add a Shoe</string>
+
+    <string name="email_label">Email</string>
+    <string name="pass_label">Password</string>
+    <string name="login_btn_text">Login</string>
+    <string name="create_new_btn_text">Create New</string>
+    <string name="welcome_title">ShoeHub</string>
+    <string name="welcome_message">Shoe made in heaven!</string>
+    <string name="welcome_frag_title">Welcome {user}</string>
+    <string name="next_btn_text">Next</string>
+
+    <string name="cd_welcome_title">Shoe Hub</string>
+    <string name="cd_next_btn">Next Button</string>
+    <string name="cd_add_shoe_button">Add Shoe Button</string>
+    <string name="cd_instruction_desc">Instructions about how to browse the app</string>
+    <string name="cd_login">Login</string>
+
+    <string name="instructions_title">Instructions</string>
+    <string name="instruction_1">1. Please press the Enter icon below in pink to view the shoe list.</string>
+    <string name="instruction_2">2. To add your favourite pair of shoe to the list, click on the FAB on the bottom right hand corner.</string>
+    <string name="instruction_3">3. On Add a Shoe screen you can enter the details of the shoe. Please note all fields are mandatory except Description. Press Save to add the shoe to the inventory.</string>
+    <string name="instruction_4">4. Once added, the shoe is listed and shown on the Shoe Listing screen.</string>
+    <string name="instruction_5">5. Click on the Exit icon on the top right hand corner to log out.</string>
+
+    <string name="shoe_name_label">Name</string>
+    <string name="brand_name_label">Brand</string>
+    <string name="size_name_label">Size</string>
+    <string name="desc_name_label">Description</string>
+    <string name="save">Save</string>
+    <string name="cancel">CANCEL</string>
+    <string name="email_error">Email required</string>
+    <string name="password_error">Password Required</string>
+    <string name="no_shoe_message">Aww! Shoe Inventory Empty :(</string>
+    <string name="cd_welcome_message">Welcome message</string>
+    <string name="add_shoe_detail_error">Please fill in the required details</string>
+    <string name="shoe_name_missing_error">Shoe name is required</string>
+    <string name="shoe_brand_missing_error">Shoe brand name is required</string>
+    <string name="size_missing_error">Size is required</string>
+
+
+</resources>
