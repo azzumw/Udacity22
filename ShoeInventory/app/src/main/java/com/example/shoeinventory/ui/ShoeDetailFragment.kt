@@ -18,7 +18,7 @@ class ShoeDetailFragment : Fragment() {
     private var _binding: FragmentShoeDetailBinding? = null
     private val binding get() = _binding!!
 
-    private val sharedViewModel: ShoeViewModel by activityViewModels()
+    private val shoeViewModel: ShoeViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -29,61 +29,48 @@ class ShoeDetailFragment : Fragment() {
             DataBindingUtil.inflate(inflater, R.layout.fragment_shoe_detail, container, false)
         binding.shoeDetailFrag = this
         binding.lifecycleOwner = this
+        binding.shoeViewModel = shoeViewModel
+
+        shoeViewModel.clearData()
 
         return binding.root
     }
 
-    fun saveShoe() {
-        setErrorTextField(false)
-        if (isValidEntry()) {
-            sharedViewModel.addShoeDetails(
-                binding.shoeNameInput.text.toString(),
-                binding.sizeNameInput.text.toString().toDouble(),
-                binding.brandNameInput.text.toString(),
-                binding.descriptionNameInput.text.toString()
-            )
-
+    fun saveShoeDetails(){
+        setErrorText(false)
+        if(shoeViewModel.isValidEntry()){
+            //add the shoe, and navigate to the shoeList
+            shoeViewModel.addShoe()
             navigateToShoeList()
-        } else {
-            setErrorTextField(true)
-            Toast.makeText(context, getString(R.string.add_shoe_detail_error), Toast.LENGTH_SHORT).show()
+        }else{
+            //show the Error
+            setErrorText(true)
         }
-
     }
 
     fun cancel() {
         navigateToShoeList()
     }
 
-    private fun isValidEntry(): Boolean {
-
-        return sharedViewModel.isValidEntry(
-            binding.shoeNameInput.text.toString(),
-            binding.sizeNameInput.text.toString(),
-            binding.brandNameInput.text.toString(),
-        )
-    }
-
     private fun navigateToShoeList() {
         findNavController().navigate(R.id.action_shoeDetailFragment_to_shoeListFragment)
     }
 
-    private fun setErrorTextField(error: Boolean) {
+    private fun setErrorText(error: Boolean) {
         if (error) {
-            if (binding.shoeNameInput.text.isNullOrBlank()) {
+            if (shoeViewModel.shoeName.value.isNullOrBlank()) {
 
                 binding.shoeNameLabel.isErrorEnabled = true
                 binding.shoeNameLabel.error = getString(R.string.shoe_name_missing_error)
             }
-            if (binding.brandNameInput.text.isNullOrBlank()) {
+            if (shoeViewModel.shoeBrand.value.isNullOrBlank()) {
                 binding.brandNameLabel.isErrorEnabled = true
                 binding.brandNameLabel.error = getString(R.string.shoe_brand_missing_error)
             }
-            if (binding.sizeNameInput.text.isNullOrBlank()) {
+            if (shoeViewModel.shoeSize.value.isNullOrBlank()) {
                 binding.sizeNameLabel.isErrorEnabled = true
                 binding.sizeNameLabel.error = getString(R.string.size_missing_error)
             }
-
 
         } else {
             binding.shoeNameLabel.isErrorEnabled = false

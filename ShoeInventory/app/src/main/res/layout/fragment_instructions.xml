@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 
+<!-- Reason for using LinearLayout
+    Initially used ConstraintLayout however,
+    have opted for LinearLayout instead due to vertically
+    positioned views. It is straight forward.
+-->
+
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
@@ -8,10 +14,11 @@
 
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:padding="16dp"
+        android:orientation="vertical"
         tools:context=".ui.InstructionsFragment">
 
 
@@ -84,6 +91,7 @@
 
         <ImageButton
             android:id="@+id/enterShorStoreBtn"
+            android:layout_gravity="center_horizontal"
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:layout_marginTop="60dp"
@@ -94,5 +102,5 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/instruction_5_tv" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
 </layout>

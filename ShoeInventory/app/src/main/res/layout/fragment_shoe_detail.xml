@@ -1,4 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+<!-- Reason for using LinearLayout
+    since the layout is vertically set up
+    it is no brainer to use LinearLayout vertically.
+-->
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
@@ -6,14 +11,19 @@
     <data>
 
         <variable
+            name="shoeViewModel"
+            type="com.example.shoeinventory.viewModels.ShoeViewModel" />
+
+        <variable
             name="shoeDetailFrag"
             type="com.example.shoeinventory.ui.ShoeDetailFragment" />
 
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:orientation="vertical"
         android:padding="16dp"
         tools:context=".ui.ShoeDetailFragment">
 
@@ -28,10 +38,11 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/shoe_name_input"
-                android:inputType="textCapSentences"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:singleLine="true" />
+                android:inputType="textCapSentences"
+                android:singleLine="true"
+                android:text="@={shoeViewModel.shoeName}" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -46,10 +57,11 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/brand_name_input"
-                android:inputType="textCapSentences"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:singleLine="true" />
+                android:inputType="textCapSentences"
+                android:singleLine="true"
+                android:text="@={shoeViewModel.shoeBrand}" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -67,7 +79,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="numberDecimal"
-                android:singleLine="true" />
+                android:singleLine="true"
+                android:text="@={shoeViewModel.shoeSize}" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -86,38 +99,28 @@
                 android:layout_height="wrap_content"
                 android:inputType="textMultiLine"
                 android:maxLines="4"
-                android:singleLine="true" />
+                android:singleLine="true"
+                android:text="@={shoeViewModel.shoeDescription}" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
-        <LinearLayout
+
+        <Button
+            android:id="@+id/save_btn"
+            style="@style/Widget.AppCompat.Button.Colored"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:gravity="center_horizontal"
-            android:orientation="vertical"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/description_name_label">
+            android:layout_marginTop="52dp"
+            android:onClick="@{()->shoeDetailFrag.saveShoeDetails()}"
+            android:text="@string/save" />
 
-            <Button
-                android:id="@+id/save_btn"
-                style="@style/Widget.AppCompat.Button.Colored"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:onClick="@{()->shoeDetailFrag.saveShoe()}"
-                android:text="@string/save" />
+        <Button
+            android:id="@+id/cancel_btn"
+            style="?attr/materialButtonOutlinedStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="@{()->shoeDetailFrag.cancel()}"
+            android:text="@string/cancel" />
 
-            <Button
-                android:id="@+id/cancel_btn"
-                style="?attr/materialButtonOutlinedStyle"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:onClick="@{()->shoeDetailFrag.cancel()}"
-                android:text="@string/cancel" />
-
-        </LinearLayout>
-
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
 </layout>

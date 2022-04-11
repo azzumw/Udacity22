@@ -11,29 +11,45 @@ class ShoeViewModel : ViewModel() {
     val shoesList: LiveData<MutableList<Shoe>>
         get() = _shoesList
 
+    val shoeName = MutableLiveData("")
+    val shoeBrand = MutableLiveData("")
+    val shoeSize = MutableLiveData("")
+    val shoeDescription = MutableLiveData("")
 
     private fun insertShoeInstance(shoe: Shoe) {
         _shoesList.value?.add(shoe)
     }
 
-    fun addShoeDetails(
-        name: String,
-        size: Double,
-        company: String,
-        description: String
-    ) {
-        val shoe = Shoe(name, size, company, description)
+    fun addShoe(){
+        val shoename = shoeName.value.toString()
+        val shoebrand = shoeBrand.value.toString()
+        val shoesize = shoeSize.value?.toDouble()!!
+        val shoedesc = shoeDescription.value.toString()
 
-        insertShoeInstance(shoe)
+        val shoeBinding = Shoe(shoename,shoesize,shoebrand,shoedesc)
+//        val shoe = Shoe(name, size, company, description)
+
+        insertShoeInstance(shoeBinding)
+
     }
 
     //isValidEntry
-    fun isValidEntry(
-        name: String,
-        size: String,
-        company: String
-    ): Boolean {
+    fun isValidEntry(): Boolean {
 
-        return name.isNotBlank() && size.isNotBlank() && company.isNotBlank()
+        if(shoeName.value.isNullOrBlank() ||
+            shoeBrand.value.isNullOrBlank() ||
+            shoeSize.value.isNullOrBlank() ){
+
+            return false
+        }
+        //add the shoe and return true
+        return true
+    }
+
+    fun clearData(){
+        shoeName.value = ""
+        shoeBrand.value = ""
+        shoeSize.value = ""
+        shoeDescription.value = ""
     }
 }

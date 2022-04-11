@@ -79,6 +79,7 @@ class ShoeListFragment : Fragment() {
     }
 
     fun navigateToDetailScreen() {
+
         findNavController().navigate(R.id.action_shoeListFragment_to_shoeDetailFragment)
     }
 

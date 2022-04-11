@@ -1,4 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- Reason for using ConstraintLayout
+    Due to the positioning of the FAB
+    I believe a more flexible layout viewgroup
+    was needed, and ConstraintLayout provides that
+    advantage over LinearLayout.
+-->
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
