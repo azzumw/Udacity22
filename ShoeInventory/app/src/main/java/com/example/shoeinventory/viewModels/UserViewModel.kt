@@ -19,9 +19,4 @@ class UserViewModel : ViewModel() {
     fun logout() {
         _isLoggedIn.value = false
     }
-
-    override fun onCleared() {
-        super.onCleared()
-        logout()
-    }
 }

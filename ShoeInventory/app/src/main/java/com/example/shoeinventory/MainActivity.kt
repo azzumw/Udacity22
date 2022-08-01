@@ -31,7 +31,13 @@ class MainActivity : AppCompatActivity() {
 
         val setOfTopLevelDestinations = setOf(R.id.shoeListFragment, R.id.loginFragment)
 
+        /*
+        Create a new Builder with a specific set of top level destinations.
+        The Up button will not be displayed when on these destinations.
+        */
         val appBarConfiguration = AppBarConfiguration.Builder(setOfTopLevelDestinations).build()
+
+
         NavigationUI.setupWithNavController(binding.toolbar, navController, appBarConfiguration)
 //        appBarConfiguration = AppBarConfiguration(navController.graph)
         setupActionBarWithNavController(navController, appBarConfiguration)

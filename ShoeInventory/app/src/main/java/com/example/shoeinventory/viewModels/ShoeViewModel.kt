@@ -11,7 +11,7 @@ class ShoeViewModel : ViewModel() {
     val shoesList: LiveData<MutableList<Shoe>>
         get() = _shoesList
 
-    val shoeName = MutableLiveData("")
+    val  shoeName = MutableLiveData("")
     val shoeBrand = MutableLiveData("")
     val shoeSize = MutableLiveData("")
     val shoeDescription = MutableLiveData("")
